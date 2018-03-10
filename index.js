@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const config=require('./config')
+const config=require('./config');
+
+const PORT = process.env.PORT || 6969
 let express = require('express');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -16,9 +18,10 @@ mongoose.connect(config.connectionString, (err) => {
         console.log('connect success');
     }
 });
+
 app.use(express.static(__dirname + '/public'));
-http.listen(6969, function(){
-    console.log('Server started. Listening on *:6969');
+http.listen(PORT, function(){
+    console.log(`Server started. Listening on *:${PORT}`);
 });
 app.get('/', (req, res) => {
     res.sendFile(__dirname+'/login.html')
