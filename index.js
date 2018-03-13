@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('./config');
-const loginRouter = require('./apis/loginApiRouter')
+const apis = require('./apis/index')
 const PORT = process.env.PORT || 6969
 let express = require('express');
 const handlebars = require('express-handlebars');
@@ -8,9 +8,9 @@ const bodyParser = require('body-parser');
 let app = express();
 let http = require('http').Server(app);
 app.use(bodyParser.urlencoded({extended: true}));
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.engine('handlebars', handlebars({}));
 app.set('view engine', 'handlebars');
-app.use('/login', loginRouter);
+app.use('/apis', apis);
 const {getAllUser, register} = require('./database/user')
 mongoose.connect(config.connectionString, (err) => {
     if (err) {
@@ -25,7 +25,7 @@ http.listen(PORT, function () {
     console.log(`Server started. Listening on *:${PORT}`);
 });
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/login.html')
+    res.render("login")
 });
 app.get('/:name', (req, res) => {
     let name = req.params.name;
