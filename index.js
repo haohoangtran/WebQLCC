@@ -1,12 +1,20 @@
 const mongoose = require('mongoose');
 const config = require('./config');
+const session = require('express-session')
 const apis = require('./apis/index')
-const PORT = process.env.PORT || 6969
+const PORT = process.env.PORT || 6969;
 let express = require('express');
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 let app = express();
 let http = require('http').Server(app);
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure: true}
+}));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.engine('handlebars', handlebars({}));
 app.set('view engine', 'handlebars');
@@ -27,10 +35,7 @@ http.listen(PORT, function () {
 app.get('/', (req, res) => {
     res.render("login")
 });
-app.get('/:name', (req, res) => {
-    let name = req.params.name;
-    res.sendFile(__dirname + `/${name}`)
-});
+
 app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html')
 });
