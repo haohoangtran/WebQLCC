@@ -17,7 +17,7 @@
 
 <body>
 
-<form method="POST" action="/apis/pages/login">
+<form method="POST" action="">
     <div class="svgContainer">
         <div>
             <svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -203,7 +203,7 @@
                     success: function (data) {
                         if (data.status) {
                             localStorage.setItem('user', data.token);
-                            $(event.currentTarget).trigger('click', {'handle': true});
+                            window.location.reload();
                         } else
                             $('#lbErr').text('Tên tài khoản mật khẩu không đúng!');
                     },

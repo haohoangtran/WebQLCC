@@ -9,10 +9,14 @@ router.post('/login', (req, res) => {
     login(obj.username, obj.password, (err, result) => {
         console.log("login", result);
         if (result) {
+            let token = getToken(result);
+            req.session.token = token;
+            req.session.save();
+            console.log("insert token ", token);
             res.send({
                 status: true,
                 user: result,
-                token: getToken(result)
+                token
             });
         } else {
             res.send({

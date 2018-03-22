@@ -1,5 +1,5 @@
 {
-  "name": "webtlu",
+  "name": "WebQLCC",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
     "crypto": "^1.0.1",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
