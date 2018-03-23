@@ -9,7 +9,18 @@ let createEmploye = (id, name, department, callback) => {
             callback(null, employe)
     });
 };
+let getAllEmploye = (callback) => {
+    Employe.find({}, function (err, employes) {
+        let obj={};
+        for(let item of employes){
+            obj[item.id]=item;
+        }
+
+        callback(err, obj);
+    });
+};
+
 
 module.exports = {
-    createEmploye
+    createEmploye, getAllEmploye
 }

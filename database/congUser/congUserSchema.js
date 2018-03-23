@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const congUserSchema = {
     user: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Employe"
     },
     dateCreate: {
         type: Date,
@@ -14,7 +14,7 @@ const congUserSchema = {
         default: ""
     },
     day: {
-        type: String,
+        type: Number,
         require: true
     },
     month: {

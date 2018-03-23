@@ -1,22 +1,32 @@
 const CongUser = require('./congUserSchema');
 
-let createCongUser = (_id, day, month, value, callback) => {
+let createCongUser = (obj, callback) => {
     let congUser = new CongUser(
-        {
-            month,
-            day,
-            value,
-            user: _id
-        }
+        obj
     );
     congUser.save(err => {
         if (err)
             callback(err, null);
         else
-            callback(null, employe)
+            callback(null, congUser)
     });
 };
+let getAllCongUser = (month = "", callback) => {
+    if (month) {
+        CongUser.find({month})
+            .populate('user')
+            .exec(function (err, post) {
+            callback(err, post)
+        });
+    } else {
+        CongUser.find({}, function (err, congUsers) {
+            callback(err, congUsers)
+        });
+    }
+
+};
+
 
 module.exports = {
-    createCongUser
+    createCongUser, getAllCongUser
 }
