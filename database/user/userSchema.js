@@ -17,5 +17,4 @@ const questionSchema = new Schema({
         default: Date.now
     }
 });
-
-module.exports = mongoose.model('user', questionSchema);
+module.exports = mongoose.model('User', questionSchema);

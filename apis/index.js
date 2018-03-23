@@ -11,13 +11,22 @@ router.post('/login', (req, res) => {
         if (result) {
             let token = getToken(result);
             req.session.token = token;
-            req.session.save();
-            console.log("insert token ", token);
-            res.send({
-                status: true,
-                user: result,
-                token
+            req.session.save(err => {
+                console.log("errr", err)
             });
+            console.log("insert token", token)
+            if (obj.type) {
+                res.send({
+                    status: true,
+                    user: result,
+                    token
+                });
+            } else {
+                res.redirect('/')
+            }
+
+
+
         } else {
             res.send({
                 status: false,
