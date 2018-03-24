@@ -4,7 +4,7 @@ const cors = require('cors');
 const session = require('express-session');
 const multer = require('multer');
 const xlsx = require('node-xlsx');
-const apis = require('./apis/index');
+const apis = require('./apis');
 const PORT = process.env.PORT || 6969;
 let express = require('express');
 const handlebars = require('express-handlebars');
@@ -20,12 +20,13 @@ app.use(session({
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.engine('handlebars', handlebars());
+app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use('/apis', apis);
-const {getAllUser, register} = require('./database/user')
-const {getAllEmploye} = require('./database/employe')
-const {createCongUser, getAllCongUser} = require('./database/congUser')
+const {getAllUser, register} = require('./database/user');
+const {getAllEmploye} = require('./database/employe');
+const {createCongUser, getAllCongUser} = require('./database/congUser');
+const {getCong} = require('./database/congUser');
 mongoose.connect(config.connectionString, (err) => {
     if (err) {
         console.log(err);
@@ -34,7 +35,7 @@ mongoose.connect(config.connectionString, (err) => {
     }
 });
 app.use(function (req, res, next) {
-    if (req.session.token == null && req.url !== '/' && req.url.indexOf(".") === -1) {
+    if (req.session.token == null && req.url !== '/' && req.url.indexOf(".") === -1 && req.url.indexOf("/apis/") === -1) {
         res.redirect(301, '/')
     } else {
         next();
@@ -56,7 +57,21 @@ app.get('/getCong/:month/:year', (req, res) => {
 app.get('/', (req, res) => {
     console.log("token ", req.session.token);
     if (req.session.token) {
-        res.render("home", {layout: false})
+        let date = new Date();
+        getCong(`${date.getMonth() + 1}/${date.getFullYear()}`, (err, thang) => {
+            getCong(`${date.getFullYear()}`, (err, nam) => {
+                getAllEmploye((err, allEmploye) => {
+                    getAllUser((err, users) => {
+                        res.render("dashboard", {
+                            coutAdmin: users.length,
+                            countEmploye: Object.keys(allEmploye).length,
+                            congThang: thang,
+                            congNam: nam
+                        })
+                    })
+                })
+            })
+        });
     } else {
         res.render("login", {layout: false})
     }
@@ -64,7 +79,7 @@ app.get('/', (req, res) => {
 });
 
 /** API path that will uploads the files */
-const {createEmploye} = require('./database/employe')
+const {createEmploye} = require('./database/employe');
 app.post('/uploads', function (req, res) {
     getAllEmploye((err, employes) => {
         console.log(err, employes);
@@ -163,7 +178,7 @@ let upload = multer({ //multer settings
 
 let isInterger = (number) => {
     return +number === number;
-}
+};
 
 
 let first = (p) => {
@@ -172,4 +187,4 @@ let first = (p) => {
         return p[+i];
     }
 
-}
+};

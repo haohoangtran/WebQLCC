@@ -17,7 +17,7 @@
 
 <body>
 
-<form method="POST" action="/apis/login">
+<form method="POST" action="/apis/user/login">
     <div class="svgContainer">
         <div>
             <svg class="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -193,7 +193,7 @@
                 $('#lbErr').text('');
                 $('#password').css({'border': 'solid #217093'});
                 $('#email').css({'border': 'solid #217093'});
-                $.ajax("/apis/login", {
+                $.ajax("/apis/user/login", {
                     type: "POST",
                     data: {
                         username, password, type: "ajax"
@@ -206,7 +206,8 @@
                         } else
                             $('#lbErr').text('Tên tài khoản mật khẩu không đúng!');
                     },
-                    error: function () {
+                    error: function (err) {
+                        console.log(err)
                         $('#lbErr').text('Mạng mẽo sao ấy :)');
                     }
                 });

@@ -1,16 +1,18 @@
 const userModel = require('./userSchema');
-const {md5} = require('../../utils')
+const {md5} = require('../../utils');
 let getAllUser = (callback) => {
     userModel.find({}, (err, result) => {
         callback(err, result)
     });
 };
+
 let login = (username, password, callback) => {
     password = md5(password);
     let user = userModel.findOne({username, password}, (err, result) => {
         callback(err, result)
     })
 };
+
 let register = (username, password, callback) => {
     password = md5(password);
     let user = new userModel({username, password});
@@ -23,6 +25,8 @@ let register = (username, password, callback) => {
         }
     });
 };
+
+
 module.exports = {
     getAllUser, register, login
-}
+};
