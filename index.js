@@ -52,7 +52,7 @@ app.use(express.static(__dirname + '/public', {redirect: false}));
 http.listen(PORT, function () {
     console.log(`Server started. Listening on *:${PORT}`);
 });
-app.get('/nhanvien', (req, res) => {
+app.get('/dsnhanvien.h', (req, res) => {
     // getAllEmploye((err,result)=>{
     //     res.send(result)
     // })
