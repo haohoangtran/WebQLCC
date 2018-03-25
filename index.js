@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('./database/position/positionSchema')
 const config = require('./config');
 const session = require('express-session');
 const multer = require('multer');
@@ -72,6 +73,7 @@ const {getAllUser, register} = require('./database/user');
 const {getAllEmploye, findEmployeById} = require('./database/employe');
 const {createCongUser, getAllCongUser} = require('./database/congUser');
 const {getCong} = require('./database/congUser');
+const {getAllPosition, findPositionByName} = require('./database/position');
 mongoose.connect(config.connectionString, (err) => {
     if (err) {
         console.log(err);
@@ -99,6 +101,23 @@ app.use(cache({
 app.listen(process.env.PORT || 6969, function () {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
+app.get('/hi', (req, res) => {
+    let arr = [
+        "Giám đốc", "P. Giám đốc", "Thư ký", "Kế toán Trưởng", "Kế toán viên", "TP. Kinh doanh", "P. Kinh doanh",
+        "NV Kinh doanh", "NV Bán hàng", "NV Văn phòng"
+    ]
+    let {addNewPosition} = require('./database/position');
+    let results = []
+    for (let tem of arr) {
+        addNewPosition(tem, (err, result) => {
+            console.log(err)
+            results.push(result);
+        });
+    }
+    setTimeout(() => {
+        res.send(results)
+    }, 4000)
+})
 app.get('/nhanvien', (req, res) => {
 
     console.log(" vao ", req.session.token);
@@ -107,11 +126,42 @@ app.get('/nhanvien', (req, res) => {
     });
 
 });
+
 app.get('/edit', (req, res) => {
     let id = req.query.id;
     findEmployeById(id, (err, result) => {
-        res.render("editemploye", {name: result.name})
+        getAllPosition((err, positions) => {
+            console.log(result)
+            res.render("editemploye", {
+                id: result.id,
+                name: result.name,
+                salary: result.salary,
+                department: result.department.name,
+                positions
+            })
+        })
     })
+});
+app.post('/edit', (req, res) => {
+    let obj = req.body;
+
+    findEmployeById(obj.id, (err, employe) => {
+        console.log(err)
+        findPositionByName(obj.department, (err, position) => {
+            console.log(err)
+            employe.department = position._id
+            employe.name = obj.name;
+            employe.salary = obj.salary;
+            employe.save((err => {
+                if (err) {
+                    res.send(`Co loi ${err}`)
+                } else {
+                    res.status(307).redirect("/nhanvien")
+                }
+            }));
+        })
+    });
+
 });
 app.get('/delete', (req, res) => {
 

@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "name": "Vũ thị Thu Hà",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 2,
+    "name": "Nguyễn Thái Hà",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 3,
+    "name": "Trần Thị Hương",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 4,
+    "name": "Lê Thị Ngọc Minh",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 5,
+    "name": "Nguyễn Thị Ngọc Ánh",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 6,
+    "name": "Bùi Ngọc Tân",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 7,
+    "name": "Nguyễn Văn Hậu",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 8,
+    "name": "Đinh Văn Tiền",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 9,
+    "name": "Lê Đăng Linh",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 10,
+    "name": "Hoàng Bảo Việt",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 11,
+    "name": "Nguyễn Quang Khải",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 12,
+    "name": "Đặng Nam Sơn",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 13,
+    "name": "Võ Thanh Hải",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  },
+  {
+    "id": 14,
+    "name": "Nguyễn Thị Hồng ",
+    "department": "5ab7be74af77020048ccedb4",
+    "salary": 5000000,
+    "__v": 0
+  }
+]

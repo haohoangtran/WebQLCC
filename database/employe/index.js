@@ -10,7 +10,7 @@ let createEmploye = (id, name, department, callback) => {
     });
 };
 let getAllEmploye = (callback) => {
-    Employe.find({}, function (err, employes) {
+    Employe.find({}).populate('department').exec(function (err, employes) {
         let obj = {};
         for (let item of employes) {
             obj[item.id] = item;
@@ -20,9 +20,17 @@ let getAllEmploye = (callback) => {
     });
 };
 let findEmployeById = (id, callback) => {
-    Employe.findById(id, (err, docs) => {
-        callback(err, docs);
-    })
+    if (+id === +id) {
+        console.log("vao day")
+        Employe.findOne({id: +id}).populate('department').exec((err, docs) => {
+            callback(err, docs);
+        })
+    } else {
+        console.log("vao duoi")
+        Employe.findById(id).populate('department').exec((err, docs) => {
+            callback(err, docs);
+        })
+    }
 }
 
 
