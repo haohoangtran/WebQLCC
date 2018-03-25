@@ -96,8 +96,9 @@ app.use(express.static(path.join(__dirname, "public"), {
 app.use(cache({
     '/**': 0 // Default to caching all items for 500
 }));
-app.listen(6969);
-
+app.listen(process.env.PORT || 6969, function () {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 app.get('/nhanvien', (req, res) => {
 
     console.log(" vao ", req.session.token);
