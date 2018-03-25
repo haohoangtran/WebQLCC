@@ -8311,15 +8311,8 @@ tbody tr td:last-child {
         left: 0;
     }
 }
-.circle {
-    width: auto;
-    height: auto;
-    border-radius: 50%;
-    font-size: 17px;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    background: #000
+.text-14 {
+    font-size: 14px;
 }
 
 /*  10 - media screen and (max-width: 320px)

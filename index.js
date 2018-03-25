@@ -23,8 +23,46 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.engine('handlebars', handlerbars({
     defaultLayout: 'main',
     helpers: {
-        getBGColor: (name) => {
-            return "red";
+        getBGColor: (fullname) => {
+            const userName = fullname || '';
+
+            let sumChars = 0;
+            for (let i = 0; i < userName.length; i += 1) {
+                sumChars += userName.charCodeAt(i);
+            }
+            let colors = {
+                carrot: '#e67e22',
+                emerald: '#2ecc71',
+                peterRiver: '#3498db',
+                wisteria: '#8e44ad',
+                alizarin: '#e74c3c',
+                turquoise: '#1abc9c',
+                midnightBlue: '#2c3e50'
+            };
+            colors = Object.values(colors);
+            return colors[sumChars % colors.length];
+        },
+        getSortName: (fullname) => {
+            const userName = fullname || '';
+            userName.trim();
+            let name = userName.toUpperCase().split(' ');
+            let avatarName = "";
+            if (name.length === 1) {
+                avatarName = ` ${name[0].charAt(0)}`;
+            } else if (name.length > 1) {
+                name = name.filter((item) => {
+                    return item;
+                })
+                avatarName = `${name[0].charAt(0)}${name[name.length - 1].charAt(0)}`;
+            }
+            return avatarName;
+        },
+        formatMoney: (money) => {
+            let result = (+money).toFixed(0).replace(/./g, function (c, i, a) {
+                return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+            });
+            return `${result} đ`
+
         }
     }
 }));
@@ -52,14 +90,19 @@ app.use(express.static(__dirname + '/public', {redirect: false}));
 http.listen(PORT, function () {
     console.log(`Server started. Listening on *:${PORT}`);
 });
-app.get('/dsnhanvien.h', (req, res) => {
-    // getAllEmploye((err,result)=>{
-    //     res.send(result)
-    // })
+app.get('/dsnhanvien', (req, res) => {
+    getAllEmploye((err, employes) => {
+        res.render("employe", {employes})
+    });
     console.log(" vao ", req.session.token)
-    res.render("employe")
-});
 
+});
+app.get('/edit.h/:id', (req, res) => {
+    res.send("hi")
+});
+app.get('/delete.h/:id', (req, res) => {
+    res.send("hi")
+});
 app.get('/getCong/:month/:year', (req, res) => {
     let month = req.params.month;
     let year = req.params.year;
