@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-title">
-                <h4>Recent Orders </h4>
+                <h4>Danh sách nhân viên</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -39,8 +39,13 @@
                                 <td><span>{{department}}</span></td>
                                 <td><span class="text-14 badge badge-success">{{formatMoney salary}}</span>
                                 </td>
-                                <td><a href="edit.h/{{_id}}"><img height="16" width="16" src="images/edit.png"></a></td>
-                                <td><a href="delete.h/{{_id}}"><img height="16" width="16" src="images/delete.png"></a></td>
+                                <td>
+                                    <a href="edit?id={{_id}}">
+                                        <img height="16" width="16" src="images/edit.png">
+                                    </a>
+                                </td>
+                                <td><a href="javascript:deleteEmploye({{id}})"><img
+                                        height="16" width="16" src="images/delete.png"></a></td>
                             </tr>
                         {{/each}}
                         </tbody>
@@ -51,3 +56,22 @@
     </div>
 
 </div>
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Modal header</h3>
+    </div>
+    <div class="modal-body">
+        <p>One fine body…</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Save changes</button>
+    </div>
+</div>
+<script>
+    function deleteEmploye(id) {
+        console.log(id)
+        $('#myModal').modal('toggle');
+    }
+</script>

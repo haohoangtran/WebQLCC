@@ -19,8 +19,13 @@ let getAllEmploye = (callback) => {
         callback(err, obj);
     });
 };
+let findEmployeById = (id, callback) => {
+    Employe.findById(id, (err, docs) => {
+        callback(err, docs);
+    })
+}
 
 
 module.exports = {
-    createEmploye, getAllEmploye
+    createEmploye, getAllEmploye, findEmployeById
 }

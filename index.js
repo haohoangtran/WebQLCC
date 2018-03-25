@@ -1,23 +1,22 @@
 const mongoose = require('mongoose');
 const config = require('./config');
-const cors = require('cors');
 const session = require('express-session');
 const multer = require('multer');
 const xlsx = require('node-xlsx');
+const path = require('path');
 const apis = require('./apis');
 const PORT = process.env.PORT || 6969;
 let express = require('express');
 const handlerbars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const cache = require('cache-control');
 let app = express();
-let http = require('http').Server(app);
 app.use(session({
     secret: '%^&@%&#@!',
     resave: false,
     saveUninitialized: true,
     cookie: {secure: false}
 }));
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.engine('handlebars', handlerbars({
@@ -67,9 +66,10 @@ app.engine('handlebars', handlerbars({
     }
 }));
 app.set('view engine', 'handlebars');
+app.set('etag', false);
 app.use('/apis', apis);
 const {getAllUser, register} = require('./database/user');
-const {getAllEmploye} = require('./database/employe');
+const {getAllEmploye, findEmployeById} = require('./database/employe');
 const {createCongUser, getAllCongUser} = require('./database/congUser');
 const {getCong} = require('./database/congUser');
 mongoose.connect(config.connectionString, (err) => {
@@ -80,27 +80,40 @@ mongoose.connect(config.connectionString, (err) => {
     }
 });
 app.use(function (req, res, next) {
+    req.headers['if-none-match'] = '';
+    req.headers['if-modified-since'] = '';
     if (!req.session.token && req.url !== '/' && req.url.indexOf(".") === -1 && req.url.indexOf("/apis/") === -1) {
-        res.redirect(301, '/')
+        res.redirect(307, '/')
     } else {
         next();
     }
 });
-app.use(express.static(__dirname + '/public', {redirect: false}));
-http.listen(PORT, function () {
-    console.log(`Server started. Listening on *:${PORT}`);
-});
-app.get('/dsnhanvien', (req, res) => {
+app.use(express.static(path.join(__dirname, "public"), {
+    redirect: false,
+    etag: false
+}));
+
+app.use(cache({
+    '/**': 0 // Default to caching all items for 500
+}));
+app.listen(6969);
+
+app.get('/nhanvien', (req, res) => {
+
+    console.log(" vao ", req.session.token);
     getAllEmploye((err, employes) => {
         res.render("employe", {employes})
     });
-    console.log(" vao ", req.session.token)
 
 });
-app.get('/edit.h/:id', (req, res) => {
-    res.send("hi")
+app.get('/edit', (req, res) => {
+    let id = req.query.id;
+    findEmployeById(id, (err, result) => {
+        res.render("editemploye", {name: result.name})
+    })
 });
-app.get('/delete.h/:id', (req, res) => {
+app.get('/delete', (req, res) => {
+
     res.send("hi")
 });
 app.get('/getCong/:month/:year', (req, res) => {
