@@ -400,28 +400,5 @@
 
     </div>
 
-    <script>
-        $(document).ready(function () {
-            console.log('document ready...');
-            $.ajax("/apis/user/login", {
-                type: "POST",
-                data: {
-                    username, password, type: "ajax"
-                },
-                dataType: "json",
-                success: function (data) {
-                    if (data.status) {
-                        localStorage.setItem('user', data.token);
-                        $(event.currentTarget).trigger('click', {'handle': true});
-                    } else
-                        $('#lbErr').text('Tên tài khoản mật khẩu không đúng!');
-                },
-                error: function (err) {
-                    console.log(err)
-                    $('#lbErr').text('Mạng mẽo sao ấy :)');
-                }
-            });
-        });
-    </script>
     <!-- End PAge Content -->
 </div>

@@ -94,11 +94,11 @@ $(document).ready(function () {
                 series: [{
                     data: seriesData[0],
                     color: 'rgba(74, 169, 233, 0.9)', // Change contextual color
-                    name: "New users"
+                    name: "New admins"
                 }, {
                     data: seriesData[1],
                     color: 'rgba(0, 0, 0, 0.1)', // Change contextual color
-                    name: "Returning users"
+                    name: "Returning admins"
 
                 }]
 
