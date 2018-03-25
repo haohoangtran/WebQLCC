@@ -45,6 +45,9 @@ app.use(express.static(__dirname + '/public', {redirect: false}));
 http.listen(PORT, function () {
     console.log(`Server started. Listening on *:${PORT}`);
 });
+app.get('/danhsachnhanvien', (req, res) => {
+    res.render("employe")
+});
 
 app.get('/getCong/:month/:year', (req, res) => {
     let month = req.params.month;
@@ -52,6 +55,13 @@ app.get('/getCong/:month/:year', (req, res) => {
     getAllCongUser(`${month}/${year}`, (err, result) => {
         console.log(err, result);
         res.send(result);
+    });
+});
+app.get('/apis/getCong', (req, res) => {
+
+    getCong(`2018`, (err, result) => {
+        console.log(err, result);
+        res.send({result});
     });
 });
 app.get('/', (req, res) => {
