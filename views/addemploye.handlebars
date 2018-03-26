@@ -1,7 +1,7 @@
 <div class="card card-outline-primary">
 
     <div class="card-body">
-        <form action="edit" method="post">
+        <form action="addEmploye" method="post">
             <div class="form-body">
                 <h3 class="card-title m-t-15">Thông tin nhân viên</h3>
                 <hr>
@@ -17,7 +17,7 @@
                     <div class="col-md-6">
                         <div class="form-group has-danger">
                             <label class="control-label">Tên</label>
-                            <input value="{{name}}" name="name" type="text" id="name"
+                            <input name="name" type="text" id="name"
                                    class="form-control form-control-danger" placeholder="Tên nhân viên">
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Lương</label>
-                            <input name="salary" id="salary" type="number" value="{{salary}}" class="form-control"
+                            <input name="salary" id="salary" type="number" class="form-control"
                                    placeholder="Lương">
                         </div>
                     </div>
@@ -58,8 +58,7 @@
 </div>
 <script src="js/lib/toastr/toastr.min.js"></script>
 <script>
-    let department = "{{department}}", name = "{{name}}", salary = "{{salary}}";
-    document.getElementById("department").value = department;
+
 
     function cancelClick(e) {
         window.location.href = "/nhanvien";
@@ -67,9 +66,37 @@
 
 
     $("#btsummit").click(function (e) {
-        if ($('#salary').val() === salary && $('#name').val() === name && $('#department').val() === department) {
+        let salary = $('#salary').val();
+        let name = $('#name').val();
+        if (!salary || !name) {
             e.preventDefault();
-            alert("Thông tin chưa được sửa đổi")
+
+            if (!salary) {
+                $('#salary').css('border', function () {
+                    return '1px solid red';
+                })
+            } else {
+                $('#salary').css('border', function () {
+                    return '1px solid #e9ecef';
+                })
+            }
+            if (!name) {
+                $('#name').css('border', function () {
+                    return '1px solid red';
+                })
+            } else {
+                $('#name').css('border', function () {
+                    return '1px solid #e9ecef';
+                })
+            }
+            alert("Vui lòng nhập đủ thông tin")
+        } else {
+            $('#salary').css('border', function () {
+                return '1px solid #e9ecef';
+            });
+            $('#name').css('border', function () {
+                return '1px solid #e9ecef';
+            });
         }
     });
 </script>

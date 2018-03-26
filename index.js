@@ -70,7 +70,7 @@ app.set('view engine', 'handlebars');
 app.set('etag', false);
 app.use('/apis', apis);
 const {getAllUser, register} = require('./database/user');
-const {getAllEmploye, findEmployeById} = require('./database/employe');
+const {getAllEmploye, findEmployeById, getLastId, deleteEmploye} = require('./database/employe');
 const {createCongUser, getAllCongUser} = require('./database/congUser');
 const {getCong} = require('./database/congUser');
 const {getAllPosition, findPositionByName} = require('./database/position');
@@ -130,8 +130,9 @@ app.get('/nhanvien', (req, res) => {
 app.get('/edit', (req, res) => {
     let id = req.query.id;
     findEmployeById(id, (err, result) => {
+        console.log(result)
         getAllPosition((err, positions) => {
-            console.log(result)
+            console.log(result);
             res.render("editemploye", {
                 id: result.id,
                 name: result.name.trim(),
@@ -163,9 +164,38 @@ app.post('/edit', (req, res) => {
     });
 
 });
-app.get('/delete', (req, res) => {
+app.get('/addEmploye', (req, res) => {
+    getAllPosition((err, positions) => {
+        getLastId((err, id) => {
+            console.log(id)
+            res.render("addemploye", {
+                positions, id
+            })
+        })
 
-    res.send("hi")
+    })
+});
+app.post('/addEmploye', (req, res) => {
+    let obj = req.body;
+
+    findPositionByName(obj.department, (err, position) => {
+        console.log(err, position)
+        getLastId((err, id) => {
+            console.log(id);
+            createEmploye(+id, obj.name, position._id, obj.salary, (err, employe) => {
+                res.status(307).redirect('/nhanvien')
+            })
+        })
+    })
+
+
+});
+app.get('/delete', (req, res) => {
+    let id = +req.query.id;
+    deleteEmploye(id, (err) => {
+        res.status(307).redirect(`/nhanvien`)
+    })
+
 });
 app.get('/getCong/:month/:year', (req, res) => {
     let month = req.params.month;

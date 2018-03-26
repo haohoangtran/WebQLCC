@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-title">
                 <h4>Danh sách nhân viên</h4>
-                <button class="btn btn-success" style="float: right">Thêm</button>
+                <button class="btn btn-success" id="btaddemploye" style="float: right">Thêm</button>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -60,13 +60,15 @@
 
 <script>
     function deleteEmploye(id, name) {
-        console.log(id, name)
+        console.log(id, name);
         let result = confirm(`Bạn có muốn xóa ${name}? `)
         if (result) {
-
-        } else {
-
+            window.location.href = `/delete?id=${id}`
         }
     }
+
+    $("#btaddemploye").click(function (e) {
+        window.location.href = '/addEmploye'
+    })
 
 </script>
