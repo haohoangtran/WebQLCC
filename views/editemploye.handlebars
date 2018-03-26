@@ -40,7 +40,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Lương</label>
-                            <input name="salary" type="number" value="{{salary}}" class="form-control"
+                            <input name="salary" id="salary" type="number" value="{{salary}}" class="form-control"
                                    placeholder="Lương">
                         </div>
                     </div>
@@ -49,17 +49,31 @@
 
             </div>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i>Save</button>
+                <button id="btsummit" type="submit" onclick="" class="btn btn-success"><i class="fa fa-check"></i>Save
+                </button>
                 <button type="button" onclick="cancelClick()" class="btn btn-inverse">Cancel</button>
             </div>
         </form>
     </div>
 </div>
+<script src="js/lib/toastr/toastr.min.js"></script>
 <script>
-    let department = "{{department}}";
+    let department = "{{department}}", name = "{{name}}", salary = "{{salary}}";
     document.getElementById("department").value = department;
 
     function cancelClick(e) {
         window.location.href = "/nhanvien";
     }
+
+    function saveClick() {
+
+    }
+
+    $("#btsummit").click(function (e) {
+
+        if ($('#salary').val() === salary && $('#name').val() === name && $('#department').val() === department) {
+            e.preventDefault();
+            alert("Thông tin chưa được sửa đổi")
+        }
+    });
 </script>

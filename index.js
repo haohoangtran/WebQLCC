@@ -105,7 +105,7 @@ app.get('/hi', (req, res) => {
     let arr = [
         "Giám đốc", "P. Giám đốc", "Thư ký", "Kế toán Trưởng", "Kế toán viên", "TP. Kinh doanh", "P. Kinh doanh",
         "NV Kinh doanh", "NV Bán hàng", "NV Văn phòng"
-    ]
+    ];
     let {addNewPosition} = require('./database/position');
     let results = []
     for (let tem of arr) {
@@ -134,7 +134,7 @@ app.get('/edit', (req, res) => {
             console.log(result)
             res.render("editemploye", {
                 id: result.id,
-                name: result.name,
+                name: result.name.trim(),
                 salary: result.salary,
                 department: result.department.name,
                 positions
@@ -246,14 +246,14 @@ app.post('/uploads', function (req, res) {
                     } else {
 
                         let contentUser = row.splice(0, 3);
-                        row.pop();//bo cai cuoi cung
+                        row.pop();//bo cai cuoi cung trong file la tong cong ....
                         for (let i in row) {
 
                             if (row[i] && row[i].indexOf('x') !== -1) {
                                 let obj = {
                                     user: employes[contentUser[0]]._id,
                                     month,
-                                    value: row[i],
+                                    value: String(row[i]).trim(),
                                     day: +i + 1,//start at 0  nen  +1
                                 };
                                 console.log(obj)
@@ -283,7 +283,10 @@ app.get('/uploads', function (req, res) {
 app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html')
 });
-
+app.get('/logout', (req, res) => {
+    req.session.token = null;
+    res.status(307).redirect('/');
+})
 let storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
         cb(null, './uploads/')
