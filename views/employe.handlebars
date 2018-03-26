@@ -45,7 +45,7 @@
                                         <img height="16" width="16" src="images/edit.png">
                                     </a>
                                 </td>
-                                <td><a href="javascript:deleteEmploye({{id}})"><img
+                                <td><a href="javascript:deleteEmploye({{id}},'{{name}}')"><img
                                         height="16" width="16" src="images/delete.png"></a></td>
                             </tr>
                         {{/each}}
@@ -57,22 +57,16 @@
     </div>
 
 </div>
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Modal header</h3>
-    </div>
-    <div class="modal-body">
-        <p>One fine body…</p>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class="btn btn-primary">Save changes</button>
-    </div>
-</div>
+
 <script>
-    function deleteEmploye(id) {
-        console.log(id)
-        $('#myModal').modal('toggle');
+    function deleteEmploye(id, name) {
+        console.log(id, name)
+        let result = confirm(`Bạn có muốn xóa ${name}? `)
+        if (result) {
+
+        } else {
+
+        }
     }
+
 </script>

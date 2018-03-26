@@ -277,7 +277,7 @@ app.post('/uploads', function (req, res) {
     });
 });
 app.get('/uploads', function (req, res) {
-    res.sendFile(__dirname + "/uploadexel.html");
+    res.render("uploads");
 });
 
 app.get('/register', (req, res) => {
