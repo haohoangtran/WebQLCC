@@ -74,7 +74,7 @@ app.use('/apis', apis);
 const {getAllUser, register} = require('./database/user');
 const {getAllEmploye, findEmployeById, getLastId, deleteEmploye} = require('./database/employe');
 const {createCongUser, getAllCongUserByMonth, getAllCongUser} = require('./database/congUser');
-const {getCong} = require('./database/congUser');
+const {getCong, removeAll} = require('./database/congUser');
 const {getAllPosition, findPositionByName} = require('./database/position');
 mongoose.connect(config.connectionString, (err) => {
     if (err) {
@@ -98,6 +98,17 @@ app.get('/cong', (req, res) => {
         res.render('cong', {congs})
         // res.send(congs)
     });
+})
+app.get('/detailCong', (req, res) => {
+    let id = req.params.id;
+    if (id) {
+
+    } else {
+        getAllEmploye((err, employes) => {
+
+            res.render("detailcong", {employes})
+        })
+    }
 })
 app.use(express.static(path.join(__dirname, "public"), {
     redirect: false,
@@ -249,71 +260,74 @@ app.get('/', (req, res) => {
 /** API path that will uploads the files */
 const {createEmploye} = require('./database/employe');
 app.post('/uploads', function (req, res) {
-    getAllEmploye((err, employes) => {
-        console.log(err, employes);
-        upload(req, res, function (err, filename) {
-            if (err) {
-                res.json({
-                    filename: filename,
-                    error_code: 1,
-                    err_desc: err
-                });
-                return;
-            }
-            try {
-                let obj = xlsx.parse(`${__dirname}/uploads/${req.file.filename}`);
-                let sheet = obj[0].data;
-                let arrCanUser = [];//lay nhung field quan trong
-                for (let row of sheet) {
-                    let firstRow = first(row);
-                    if (row && row[0]) {
+    removeAll((err, result) => {
 
-                        if (String(firstRow).indexOf("BẢNG CHẤM CÔNG THÁNG") !== -1) {
-                            arrCanUser.push([...row]);
-                        }
-                        else if (isInterger(firstRow)) {
-                            arrCanUser.push([...row])
-                        }
-                    }
+        getAllEmploye((err, employes) => {
+            console.log(err, employes);
+            upload(req, res, function (err, filename) {
+                if (err) {
+                    res.json({
+                        filename: filename,
+                        error_code: 1,
+                        err_desc: err
+                    });
+                    return;
                 }
-                console.log(arrCanUser);
-                let month;
-                for (let row of arrCanUser) {
-                    if (row.length === 1) {
-                        let arr = first(row).trim().split(' ');
-                        month = arr[arr.length - 1];
-                    } else {
+                try {
+                    let obj = xlsx.parse(`${__dirname}/uploads/${req.file.filename}`);
+                    let sheet = obj[0].data;
+                    let arrCanUser = [];//lay nhung field quan trong
+                    for (let row of sheet) {
+                        let firstRow = first(row);
+                        if (row && row[0]) {
 
-                        let contentUser = row.splice(0, 3);
-                        row.pop();//bo cai cuoi cung trong file la tong cong ....
-                        for (let i in row) {
-
-                            if (row[i] && row[i].indexOf('x') !== -1) {
-                                let obj = {
-                                    user: employes[contentUser[0]]._id,
-                                    month,
-                                    value: String(row[i]).trim(),
-                                    day: +i + 1,//start at 0  nen  +1
-                                };
-                                console.log(obj)
-                                createCongUser(obj, (err, result) => {
-
-                                });
+                            if (String(firstRow).indexOf("BẢNG CHẤM CÔNG THÁNG") !== -1) {
+                                arrCanUser.push([...row]);
+                            }
+                            else if (isInterger(firstRow)) {
+                                arrCanUser.push([...row])
                             }
                         }
                     }
+                    console.log(arrCanUser);
+                    let month;
+                    for (let row of arrCanUser) {
+                        if (row.length === 1) {
+                            let arr = first(row).trim().split(' ');
+                            month = arr[arr.length - 1];
+                        } else {
+
+                            let contentUser = row.splice(0, 3);
+                            row.pop();//bo cai cuoi cung trong file la tong cong ....
+                            for (let i in row) {
+
+                                if (row[i] && row[i].indexOf('x') !== -1) {
+                                    let obj = {
+                                        user: employes[contentUser[0]]._id,
+                                        month,
+                                        value: String(row[i]).trim(),
+                                        day: +i + 1,//start at 0  nen  +1
+                                    };
+                                    console.log(obj)
+                                    createCongUser(obj, (err, result) => {
+
+                                    });
+                                }
+                            }
+                        }
+                    }
+
+                } catch (ex) {
+                    console.log(ex)
                 }
 
-            } catch (ex) {
-                console.log(ex)
-            }
-
-            res.json({
-                filename,
-                error_code: 0, err_desc: null
+                res.json({
+                    filename,
+                    error_code: 0, err_desc: null
+                });
             });
         });
-    });
+    })
 });
 app.get('/uploads', function (req, res) {
     res.render("uploads");

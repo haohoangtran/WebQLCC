@@ -25,6 +25,9 @@ let getAllCongUserByMonth = (month = "", callback) => {
     }
 
 };
+let removeAll = (callback) => {
+    CongUser.remove({}, callback)
+}
 let getAllCongUser = (callback) => {
     CongUser.find({}).populate("user").sort({day: 'asc'}).exec(function (err, docs) {
         callback(
@@ -63,5 +66,5 @@ let sortObject = (o) => {
 }
 
 module.exports = {
-    createCongUser, getAllCongUserByMonth, getCong, getAllCongUser
+    createCongUser, getAllCongUserByMonth, getCong, getAllCongUser, removeAll
 }
