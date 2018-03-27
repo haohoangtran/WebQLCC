@@ -36,12 +36,10 @@ let getAllEmploye = (callback) => {
 };
 let findEmployeById = (id, callback) => {
     if (+id === +id) {
-        console.log("vao day")
         Employe.findOne({id: +id}).populate('department').exec((err, docs) => {
             callback(err, docs);
         })
     } else {
-        console.log("vao duoi")
         Employe.findById(id).populate('department').exec((err, docs) => {
             callback(err, docs);
         })

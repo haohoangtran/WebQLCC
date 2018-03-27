@@ -83,15 +83,15 @@ mongoose.connect(config.connectionString, (err) => {
         console.log('connect success');
     }
 });
-// app.use(function (req, res, next) {
-//     req.headers['if-none-match'] = '';
-//     req.headers['if-modified-since'] = '';
-//     if (!req.session.token && req.url !== '/' && req.url.indexOf(".") === -1 && req.url.indexOf("/apis/") === -1) {
-//         res.redirect(307, '/')
-//     } else {
-//         next();
-//     }
-// });
+app.use(function (req, res, next) {
+    req.headers['if-none-match'] = '';
+    req.headers['if-modified-since'] = '';
+    if (!req.session.token && req.url !== '/' && req.url.indexOf(".") === -1 && req.url.indexOf("/apis/") === -1) {
+        res.redirect(307, '/')
+    } else {
+        next();
+    }
+});
 app.get('/cong', (req, res) => {
     getAllCongUser((err, congs) => {
         console.log(congs)
@@ -105,10 +105,13 @@ app.get('/detailCong', (req, res) => {
     if (id) {
         getAllEmploye((er, employes) => {
             getAllCongByIdUser(id, (err, congs) => {
-                console.log(congs)
-                let nameSelect = congs[0].congThang[0].user.name;
-                console.log(nameSelect)
-                res.render('detailcongemploye', {congs, employes, nameSelect})
+                findEmployeById(id, (err, employe) => {
+                    console.log(congs)
+                    let nameSelect = employe.name || ""
+                    console.log(nameSelect)
+                    res.render('detailcongemploye', {congs, employes, nameSelect, isEmpty: congs.length === 0})
+                })
+
             })
         })
 
