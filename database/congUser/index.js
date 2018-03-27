@@ -52,6 +52,7 @@ let getCong = (month, callback) => {
         });
     });
 };
+
 let handleCong = (congs) => {
     let obj = {};
     for (let item of congs) {
@@ -64,7 +65,9 @@ let handleCong = (congs) => {
     let arr = Object.values(sortObject(obj));
     return arr.map((item) => {
         return {
-            month: item[0].month, congThang: item
+            month: item[0].month,
+            congThang: item,
+            tongCong: item.filter((i) => i.value.indexOf('x/2') !== -1).length / 2 + item.filter((i) => i.value.toLowerCase() === 'x').length//logic =)))
         };
     })
 };

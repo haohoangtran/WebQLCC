@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b51a3660-daca-41bf-84b2-f808938f5a2f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/views/detailcongemploye.handlebars" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/congUser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/congUser/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/detailcong.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/detailcong.handlebars" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/detailcongemploye.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/detailcongemploye.handlebars" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,60 +19,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
+            <state relative-caret-position="273">
+              <caret line="110" column="54" selection-start-line="110" selection-start-column="49" selection-end-line="110" selection-end-column="54" />
               <folding>
                 <element signature="e#762#2390#0" />
                 <element signature="e#8070#10410#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="employe.handlebars" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/employe.handlebars">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="65" column="51" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="employeSchema.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/employe/employeSchema.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="14" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="detailcong.handlebars" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/detailcong.handlebars">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.handlebars" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layouts/main.handlebars">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="297" column="51" selection-start-line="297" selection-start-column="51" selection-end-line="297" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cong.handlebars" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/cong.handlebars">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="64" selection-end-line="45" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -91,17 +44,17 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/employe/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
+            <state relative-caret-position="-186">
               <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/congUser/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="36" column="2" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
+            <state relative-caret-position="487">
+              <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -109,8 +62,8 @@
       <file leaf-file-name="detailcongemploye.handlebars" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/detailcongemploye.handlebars">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+            <state relative-caret-position="1">
+              <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -129,8 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Extra Area Chart</find>
-      <find>John Abraham</find>
       <find>danh</find>
       <find>danhsac</find>
       <find>regi</find>
@@ -155,10 +106,12 @@
       <find>năm n</find>
       <find>/cong</find>
       <find>uploads</find>
-      <find>deta</find>
       <find>/edit</find>
       <find>theo nh</find>
       <find>window.loca</find>
+      <find>dele</find>
+      <find>/deta</find>
+      <find>deta</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -223,9 +176,9 @@
         <option value="$PROJECT_DIR$/database/user/index.js" />
         <option value="$PROJECT_DIR$/views/layouts/main.handlebars" />
         <option value="$PROJECT_DIR$/views/detailcong.handlebars" />
+        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/database/congUser/index.js" />
         <option value="$PROJECT_DIR$/views/detailcongemploye.handlebars" />
-        <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
   </component>
@@ -414,7 +367,7 @@
       <workItem from="1521949453068" duration="23740000" />
       <workItem from="1522026598700" duration="12286000" />
       <workItem from="1522124205885" duration="1559000" />
-      <workItem from="1522125776818" duration="7002000" />
+      <workItem from="1522125776818" duration="8778000" />
     </task>
     <task id="LOCAL-00001" summary="add icon">
       <created>1520654986046</created>
@@ -549,23 +502,30 @@
       <option name="project" value="LOCAL" />
       <updated>1522131007143</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="add employe detail">
+      <created>1522134405626</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1522134405626</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124494000" />
+    <option name="totallyTimeSpent" value="126270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1850628" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1850628" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295583" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32627118" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32627118" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32768363" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -616,12 +576,21 @@
     <MESSAGE value="add cong" />
     <MESSAGE value="fix view" />
     <MESSAGE value="fix upload excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix upload excel" />
+    <MESSAGE value="add employe detail" />
+    <option name="LAST_COMMIT_MESSAGE" value="add employe detail" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="45" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/index.js</url>
+          <line>109</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="49" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -888,13 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/editemploye.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -933,20 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/employe/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/congUser/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="36" column="2" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/detailcong.handlebars">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -961,28 +909,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/detailcongemploye.handlebars">
+    <entry file="file://$PROJECT_DIR$/views/employe.handlebars">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+        <state relative-caret-position="731">
+          <caret line="65" column="51" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/employe.handlebars">
+    <entry file="file://$PROJECT_DIR$/views/editemploye.handlebars">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="65" column="51" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="51" />
+        <state relative-caret-position="119">
+          <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/employe/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-186">
+          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
+        <state relative-caret-position="273">
+          <caret line="110" column="54" selection-start-line="110" selection-start-column="49" selection-end-line="110" selection-end-column="54" />
           <folding>
             <element signature="e#762#2390#0" />
             <element signature="e#8070#10410#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/detailcongemploye.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/congUser/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
         </state>
       </provider>
     </entry>
