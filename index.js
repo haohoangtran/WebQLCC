@@ -63,7 +63,9 @@ app.engine('handlebars', handlerbars({
             });
             return `${result} đ`
 
-        }
+        },
+        getIDIndex: (id) => id + 1,
+        getCong: (value) => value.indexOf("x/2") !== -1 ? 0.5 : 1
     }
 }));
 app.set('view engine', 'handlebars');
@@ -71,7 +73,7 @@ app.set('etag', false);
 app.use('/apis', apis);
 const {getAllUser, register} = require('./database/user');
 const {getAllEmploye, findEmployeById, getLastId, deleteEmploye} = require('./database/employe');
-const {createCongUser, getAllCongUser} = require('./database/congUser');
+const {createCongUser, getAllCongUserByMonth, getAllCongUser} = require('./database/congUser');
 const {getCong} = require('./database/congUser');
 const {getAllPosition, findPositionByName} = require('./database/position');
 mongoose.connect(config.connectionString, (err) => {
@@ -90,6 +92,13 @@ app.use(function (req, res, next) {
         next();
     }
 });
+app.get('/cong', (req, res) => {
+    getAllCongUser((err, congs) => {
+        console.log(congs)
+        res.render('cong', {congs})
+        // res.send(congs)
+    });
+})
 app.use(express.static(path.join(__dirname, "public"), {
     redirect: false,
     etag: false
@@ -200,7 +209,7 @@ app.get('/delete', (req, res) => {
 app.get('/getCong/:month/:year', (req, res) => {
     let month = req.params.month;
     let year = req.params.year;
-    getAllCongUser(`${month}/${year}`, (err, result) => {
+    getAllCongUserByMonth(`${month}/${year}`, (err, result) => {
         console.log(err, result);
         res.send(result);
     });

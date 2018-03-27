@@ -11,7 +11,7 @@ let createCongUser = (obj, callback) => {
             callback(null, congUser)
     });
 };
-let getAllCongUser = (month = "", callback) => {
+let getAllCongUserByMonth = (month = "", callback) => {
     if (month) {
         CongUser.find({month})
             .populate('user')
@@ -25,6 +25,13 @@ let getAllCongUser = (month = "", callback) => {
     }
 
 };
+let getAllCongUser = (callback) => {
+    CongUser.find({}).populate("user").sort({day: 'asc'}).exec(function (err, docs) {
+        callback(
+            err, handleCong(docs)
+        )
+    });
+};
 let getCong = (month, callback) => {
     let regex = new RegExp(month, "i")
         , query = {month: regex};
@@ -35,7 +42,26 @@ let getCong = (month, callback) => {
         });
     });
 };
+let handleCong = (congs) => {
+    let obj = {};
+    for (let item of congs) {
+        if (obj[item.month]) {
+            obj[item.month].push(item);
+        } else {
+            obj[item.month] = [item];
+        }
+    }
+    let arr = Object.values(sortObject(obj));
+    return arr.map((item) => {
+        return {
+            month: item[0].month, congThang: item
+        };
+    })
+};
+let sortObject = (o) => {
+    return Object.keys(o).sort().reduce((r, k) => (r[k] = o[k], r), {});
+}
 
 module.exports = {
-    createCongUser, getAllCongUser, getCong
+    createCongUser, getAllCongUserByMonth, getCong, getAllCongUser
 }
