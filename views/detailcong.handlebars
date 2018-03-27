@@ -1,12 +1,14 @@
-<div class="card-body">
-    <p class="text-muted m-b-15">Chọn nhân viên để xem chi tiết</p>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            {{#each employes}}
-                <li><span href="#">{{name}}</span></li>
-            {{/each}}
-        </ul>
+<div class="card">
+    <div class="card-body">
+        <p class="text-muted m-b-15"></p>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{nameSelect}}
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                {{#each employes}}
+                    <li><a href="detailcong?id={{_id}}">{{name}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
     </div>
 </div>

@@ -73,7 +73,7 @@ app.set('etag', false);
 app.use('/apis', apis);
 const {getAllUser, register} = require('./database/user');
 const {getAllEmploye, findEmployeById, getLastId, deleteEmploye} = require('./database/employe');
-const {createCongUser, getAllCongUserByMonth, getAllCongUser} = require('./database/congUser');
+const {createCongUser, getAllCongUserByMonth, getAllCongUser, getAllCongByIdUser} = require('./database/congUser');
 const {getCong, removeAll} = require('./database/congUser');
 const {getAllPosition, findPositionByName} = require('./database/position');
 mongoose.connect(config.connectionString, (err) => {
@@ -100,13 +100,16 @@ app.get('/cong', (req, res) => {
     });
 })
 app.get('/detailCong', (req, res) => {
-    let id = req.params.id;
+    let id = req.query.id;
+    console.log(id)
     if (id) {
-
+        getAllCongByIdUser(id, (err, congs) => {
+            console.log(congs)
+            res.render('cong', {congs})
+        })
     } else {
         getAllEmploye((err, employes) => {
-
-            res.render("detailcong", {employes})
+            res.render("detailcong", {employes, nameSelect: "Chọn nhân viên"})
         })
     }
 })
@@ -215,7 +218,6 @@ app.get('/delete', (req, res) => {
     deleteEmploye(id, (err) => {
         res.status(307).redirect(`/nhanvien`)
     })
-
 });
 app.get('/getCong/:month/:year', (req, res) => {
     let month = req.params.month;

@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-body">
+        <p class="text-muted m-b-15"></p>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{nameSelect}}
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                {{#each employes}}
+                    <li><a href="detailcong?id={{_id}}">{{name}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+{{#each congs}}
+
+    <div class="card">
+        <div class="card-title">
+            <h4>Công tháng {{month}}</h4>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each congThang}}
+                        <tr>
+                            <th scope="row">{{getIDIndex @index}}</th>
+                            <td>{{user.name}}</td>
+                            <td><span class="badge badge-success">Thành công</span></td>
+                            <td>{{day}}</td>
+                            <td class="color-primary">{{getCong value}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{{/each}}
+
