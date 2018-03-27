@@ -96,9 +96,11 @@ app.get('/cong', (req, res) => {
     getAllCongUser((err, congs) => {
         console.log(congs)
         res.render('cong', {congs})
-        // res.send(congs)
     });
 })
+app.get('/changePassword', (req, res) => {
+    res.render("changepassword")
+});
 app.get('/detailCong', (req, res) => {
     let id = req.query.id;
     console.log(id);

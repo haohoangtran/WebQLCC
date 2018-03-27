@@ -8,7 +8,7 @@ let getAllUser = (callback) => {
 
 let login = (username, password, callback) => {
     password = md5(password);
-    let user = userModel.findOne({username, password}, (err, result) => {
+    userModel.findOne({username, password}, (err, result) => {
         callback(err, result)
     })
 };
@@ -25,8 +25,26 @@ let register = (username, password, callback) => {
         }
     });
 };
+let getPasswordById = (id, callback) => {
+    userModel.findById(id, (err, doc) => {
+        if (doc) {
+            console.log(doc)
+            callback(err, doc.password);
+        } else {
+            callback(err, null);
+        }
+    })
+};
+let updatePassword = (id, password, callback) => {
+    userModel.findById(id, (err, result) => {
+        result.password = md5(password);
+        result.save(err => {
+            callback(err)
+        })
+    })
+};
 
 
 module.exports = {
-    getAllUser, register, login
+    getAllUser, register, login, getPasswordById, updatePassword
 };
