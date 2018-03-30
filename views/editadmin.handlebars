@@ -1,0 +1,57 @@
+<div class="card card-outline-primary">
+
+    <div class="card-body">
+        <form action="edit" method="post">
+            <div class="form-body">
+                <h3 class="card-title m-t-15">Thông tin nhân viên</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">ID</label>
+                            <input name="id" readonly value="{{_id}}" type="text" id="id" class="form-control"
+                                   placeholder="ID">
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group has-danger">
+                            <label class="control-label">Username</label>
+                            <input value="{{username}}" name="name" type="text" id="name"
+                                   class="form-control form-control-danger">
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group has-success">
+                            <label class="control-label">Tài khoản root?</label>
+                            <select name="department" id="department" class="form-control custom-select">
+                                <option>Có</option>
+                                <option>Không</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Mật khẩu</label>
+                            <input name="salary" id="salary" type="password" value="{{password}}" class="form-control"
+                                   placeholder="Lương">
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+
+            </div>
+            <div class="form-actions">
+                <button id="btsummit" type="submit" class="btn btn-success"><i class="fa fa-check"></i>Save
+                </button>
+                <button type="button" onclick="cancelClick()" class="btn btn-inverse">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

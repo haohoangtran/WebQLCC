@@ -75,6 +75,7 @@ const {getAllUser, register} = require('./database/user');
 const {getAllEmploye, findEmployeById, getLastId, deleteEmploye} = require('./database/employe');
 const {createCongUser, getAllCongUserByMonth, getAllCongUser, getAllCongByIdUser} = require('./database/congUser');
 const {getCong, removeAll} = require('./database/congUser');
+const {getAllAdmin, findAdminById} = require('./database/user')
 const {getAllPosition, findPositionByName} = require('./database/position');
 mongoose.connect(config.connectionString, (err) => {
     if (err) {
@@ -101,6 +102,22 @@ app.get('/cong', (req, res) => {
 app.get('/changePassword', (req, res) => {
     res.render("changepassword")
 });
+app.get('/administrator', (req, res) => {
+    getAllAdmin((err, admins) => {
+        res.render('administrator', {admins})
+    });
+});
+app.get('/addAdmin', (req, res) => {
+    res.render('addadmin');
+});
+app.post('/addAdmin', (req, res) => {
+    let obj = req.body;
+    register(obj.username, obj.password, false, (err, user) => {
+        res.status(307).redirect('/administrator')
+    })
+
+});
+
 app.get('/detailCong', (req, res) => {
     let id = req.query.id;
     console.log(id);

@@ -13,9 +13,9 @@ let login = (username, password, callback) => {
     })
 };
 
-let register = (username, password, callback) => {
+let register = (username, password, canResetPass = false, callback) => {
     password = md5(password);
-    let user = new userModel({username, password});
+    let user = new userModel({username, password, canResetPass});
     user.save(err => {
         if (err) {
             console.log(err);
@@ -43,8 +43,19 @@ let updatePassword = (id, password, callback) => {
         })
     })
 };
-
+let getAllAdmin = (callback) => {
+    userModel.find({}, callback);
+};
+let findAdminById = (id, callback) => {
+    userModel.findById(id).exec(callback);
+}
+let checkUsername = (username, callback) => {
+    userModel.findOne({username}, (err, user) => {
+        let status = Boolean(user);
+        callback(err, status)
+    })
+}
 
 module.exports = {
-    getAllUser, register, login, getPasswordById, updatePassword
+    getAllUser, register, login, getPasswordById, updatePassword, getAllAdmin, findAdminById, checkUsername
 };

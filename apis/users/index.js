@@ -1,4 +1,4 @@
-const {login, register, getAllUser, getPasswordById, updatePassword} = require('../../database/user/index');
+const {login, register, getAllUser, getPasswordById, updatePassword, checkUsername} = require('../../database/user/index');
 const {getToken, verifyToken, md5} = require('../../utils');
 const router = require('express').Router();
 router.post('/login', (req, res) => {
@@ -103,6 +103,13 @@ router.post('/changePassword', (req, res) => {
                 err: err
             })
         }
+    })
+});
+router.post("/checkUserName", (req, res) => {
+    let obj = req.body;
+    console.log(obj)
+    checkUsername(obj.username, (err, status) => {
+        res.send({status})
     })
 });
 

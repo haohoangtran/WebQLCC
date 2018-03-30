@@ -15,6 +15,10 @@ const adminSchema = new Schema({
     dateCreate: {
         type: Date,
         default: Date.now
+    },
+    canResetPass: {
+        type: Boolean,
+        default: false
     }
 });
 module.exports = mongoose.model('User', adminSchema);
