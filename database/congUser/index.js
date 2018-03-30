@@ -53,7 +53,7 @@ let getCong = (month, callback) => {
     });
 };
 
-let handleCong = (congs) => {
+let handleCong = (congs = []) => {
     let obj = {};
     for (let item of congs) {
         if (obj[item.month]) {
@@ -63,11 +63,16 @@ let handleCong = (congs) => {
         }
     }
     let arr = Object.values(sortObject(obj));
+    console.log(arr);
     return arr.map((item) => {
+        let month = item[0].month,
+            congThang = item,
+            tongCong = item.filter((i) => i.value.indexOf('x/2') !== -1).length / 2 + item.filter((i) => i.value.toLowerCase() === 'x').length;
         return {
-            month: item[0].month,
-            congThang: item,
-            tongCong: item.filter((i) => i.value.indexOf('x/2') !== -1).length / 2 + item.filter((i) => i.value.toLowerCase() === 'x').length//logic =)))
+            month,
+            congThang,
+            tongCong, tongLuong: item[0].user.salary * (tongCong / 30),
+            salary: item[0].user.salary
         };
     })
 };

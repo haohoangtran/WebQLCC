@@ -115,8 +115,26 @@ app.post('/addAdmin', (req, res) => {
     register(obj.username, obj.password, false, (err, user) => {
         res.status(307).redirect('/administrator')
     })
-
 });
+app.get('/detailLuong', (req, res) => {
+    let id = req.query.id;
+    if (id) {
+        getAllEmploye((er, employes) => {
+            getAllCongByIdUser(id, (err, congs) => {
+                findEmployeById(id, (err, employe) => {
+                    console.log(congs)
+                    let nameSelect = employe.name || ""
+                    console.log(nameSelect)
+                    res.render('detailsalary', {congs, employes, nameSelect, isEmpty: congs.length === 0})
+                })
+            })
+        })
+    } else {
+        getAllEmploye((err, employes) => {
+            res.render("detailsalarychooseeemploye", {employes, nameSelect: "Chọn nhân viên"})
+        })
+    }
+})
 
 app.get('/detailCong', (req, res) => {
     let id = req.query.id;
@@ -139,7 +157,7 @@ app.get('/detailCong', (req, res) => {
             res.render("detailcong", {employes, nameSelect: "Chọn nhân viên"})
         })
     }
-})
+});
 app.use(express.static(path.join(__dirname, "public"), {
     redirect: false,
     etag: false

@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-body">
+        <p class="text-muted m-b-15"></p>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{nameSelect}}
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                {{#each employes}}
+                    <li><a href="detailLuong?id={{_id}}">{{name}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    document.title = "Chi tiết Lương"
+</script>
