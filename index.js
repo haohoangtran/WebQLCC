@@ -20,6 +20,7 @@ app.use(session({
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
 app.engine('handlebars', handlerbars({
     defaultLayout: 'main',
     helpers: {
@@ -148,7 +149,6 @@ app.get('/detailCong', (req, res) => {
                     console.log(nameSelect)
                     res.render('detailcongemploye', {congs, employes, nameSelect, isEmpty: congs.length === 0})
                 })
-
             })
         })
 
@@ -367,11 +367,7 @@ app.post('/uploads', function (req, res) {
                 } catch (ex) {
                     console.log(ex)
                 }
-
-                res.json({
-                    filename,
-                    error_code: 0, err_desc: null
-                });
+                res.status(307).redirect('/cong');
             });
         });
     })
@@ -386,7 +382,13 @@ app.get('/register', (req, res) => {
 app.get('/logout', (req, res) => {
     req.session.token = null;
     res.status(307).redirect('/');
-})
+});
+app.use(function (req, res, next) {
+    res.status(404);
+    res.render('err')
+
+
+});
 let storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
         cb(null, './uploads/')
