@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b51a3660-daca-41bf-84b2-f808938f5a2f" name="Default" comment="save work">
+    <list default="true" id="b51a3660-daca-41bf-84b2-f808938f5a2f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -38,8 +38,26 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
+            <state relative-caret-position="17">
+              <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.handlebars" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/login.handlebars">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="557">
+              <caret line="171" column="44" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -94,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>{      &quot;$oid&quot;: &quot;5ab7be74af77020048ccedb4&quot;    }</find>
       <find>mongoose</find>
       <find>res.render(&quot;employe&quot;)</find>
       <find>req.se</find>
@@ -124,6 +141,7 @@
       <find>danh sa</find>
       <find>addAdmin</find>
       <find>detailcongemploye</find>
+      <find>123456</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -169,7 +187,6 @@
         <option value="$PROJECT_DIR$/database/employe/employeSchema.js" />
         <option value="$PROJECT_DIR$/data/employes.json" />
         <option value="$PROJECT_DIR$/database/position/index.js" />
-        <option value="$PROJECT_DIR$/views/login.handlebars" />
         <option value="$PROJECT_DIR$/database/employe/index.js" />
         <option value="$PROJECT_DIR$/views/changepassword.handlebars" />
         <option value="$PROJECT_DIR$/views/editemploye.handlebars" />
@@ -192,6 +209,7 @@
         <option value="$PROJECT_DIR$/database/congUser/index.js" />
         <option value="$PROJECT_DIR$/views/detailsalary.handlebars" />
         <option value="$PROJECT_DIR$/views/layouts/main.handlebars" />
+        <option value="$PROJECT_DIR$/views/login.handlebars" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -483,7 +501,7 @@
       <workItem from="1522227008962" duration="632000" />
       <workItem from="1522372522521" duration="9149000" />
       <workItem from="1522397953282" duration="31000" />
-      <workItem from="1522459498047" duration="2475000" />
+      <workItem from="1522459498047" duration="3358000" />
     </task>
     <task id="LOCAL-00001" summary="add icon">
       <created>1520654986046</created>
@@ -709,11 +727,25 @@
       <option name="project" value="LOCAL" />
       <updated>1522461560475</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="save work">
+      <created>1522461984359</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1522461984359</updated>
+    </task>
+    <task id="LOCAL-00034" summary="remove username,password default">
+      <created>1522462158651</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1522462158651</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151600000" />
+    <option name="totallyTimeSpent" value="152483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -786,7 +818,8 @@
     <MESSAGE value="change icon" />
     <MESSAGE value="add license" />
     <MESSAGE value="save work" />
-    <option name="LAST_COMMIT_MESSAGE" value="save work" />
+    <MESSAGE value="remove username,password default" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove username,password default" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -819,13 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="82" column="29" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1030,13 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="173" column="48" lean-forward="true" selection-start-line="173" selection-start-column="3" selection-end-line="173" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/employe.handlebars">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
@@ -1128,10 +1147,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="171" column="44" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
+        <state relative-caret-position="17">
+          <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
         </state>
       </provider>
     </entry>
