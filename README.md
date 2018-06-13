@@ -14,13 +14,7 @@ First, download NodeJS LTS
  https://nodejs.org/en 
 ```
 
-Add the dependency to your app modules:
 
-```gradle
-dependencies {
-    compile 'moe.feng:BreadcrumbsView:latest-version'
-}
-```
 
 ### Clone this repo
 
