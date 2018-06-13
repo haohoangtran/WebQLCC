@@ -1,7 +1,7 @@
 # WebQLCC
 
 
-School project web fullstack nodejs.
+Web fullstack nodejs.
 
 
 ## How to use
